@@ -3,11 +3,34 @@ import pandas as pd
 from nltk.tokenize import word_tokenize,sent_tokenize
 from sklearn.base import BaseEstimator, TransformerMixin
 from nltk.stem import WordNetLemmatizer
+import re
+
+url_regex = "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
 
 def tokenize(text):
-    tokens = word_tokenize(text)
-    lemmatizer = WordNetLemmatizer()
+    """ 
+    Tokenize Function. 
+  
+    Cleaning The Data And Tokenizing Text. 
+  
+    Parameters: 
+    text (str): Text For Cleaning And Tokenizing (English).
+    
+    Returns: 
+    clean_tokens (List): Tokenized Text, Clean For ML Modeling
+    """
 
+    # removing urls 
+    detected_urls = re.findall(url_regex, text)
+    for url in detected_urls:
+        text = text.replace(url, "urlplaceholder")
+    
+    # tokenizing
+    tokens = word_tokenize(text)
+    
+    # lemmatizing
+    lemmatizer = WordNetLemmatizer()
+    
     clean_tokens = []
     for tok in tokens:
         clean_tok = lemmatizer.lemmatize(tok).lower().strip()
@@ -16,6 +39,12 @@ def tokenize(text):
     return clean_tokens
     
 class StartingVerbExtractor(BaseEstimator, TransformerMixin):
+    """
+    Starting Verb Extractor class
+    
+    This class extract the starting verb of a sentence,
+    creating a new feature for the ML classifier
+    """
 
     def starting_verb(self, text):
         sentence_list = nltk.sent_tokenize(text)
@@ -26,7 +55,7 @@ class StartingVerbExtractor(BaseEstimator, TransformerMixin):
                 return True
         return False
 
-    def fit(self, X, y=None):
+    def fit(self, x, y=None):
         return self
 
     def transform(self, X):
