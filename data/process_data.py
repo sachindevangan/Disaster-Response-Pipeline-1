@@ -10,7 +10,7 @@ def load_data(messages_filepath, categories_filepath):
   
     Parameters: 
     messages_filepath (str): Filepath Where Messages Are Stored.
-  	categories_filepath (str): Filepath Where Categories Are Stored.
+    categories_filepath (str): Filepath Where Categories Are Stored.
     
     Returns: 
     merged_df (DataFrame): Combined DataFrame Object
