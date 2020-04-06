@@ -2,6 +2,7 @@ import json
 import plotly
 import pandas as pd
 import nltk
+import re
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from sklearn.base import BaseEstimator, TransformerMixin
@@ -11,6 +12,7 @@ from plotly.graph_objs import Bar
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
 
+url_regex = "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
 
 app = Flask(__name__)
 
@@ -33,6 +35,10 @@ class StartingVerbExtractor(BaseEstimator, TransformerMixin):
         return pd.DataFrame(X_tagged)
 
 def tokenize(text):
+    # removing urls 
+    detected_urls = re.findall(url_regex, text)
+    for url in detected_urls:
+        text = text.replace(url, "urlplaceholder")
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
