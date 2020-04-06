@@ -41,7 +41,7 @@ The Project is divided in the following Sections:
 ### Installing
 Clone this GIT repository:
 ```
-git clone https://github.com/matteobonanomi/disaster-response.git
+git clone https://github.com/buchan123/Disaster-Response-Pipeline.git
 ```
 <a name="executing"></a>
 ### Executing Program:
