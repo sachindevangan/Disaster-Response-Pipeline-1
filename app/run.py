@@ -131,5 +131,5 @@ def go():
         classification_result=classification_results
     )
 
-
+app.run()
 
