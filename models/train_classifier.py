@@ -1,7 +1,5 @@
 # importing libraries
 import nltk
-nltk.download(['punkt', 'wordnet','averaged_perceptron_tagger'])
-nltk.download('stopwords')
 import sys
 import pandas as pd
 import numpy as np
@@ -83,7 +81,7 @@ def build_model():
     ])
     
     # parameters to grid search
-    parameters = { 'clf__estimator__n_estimators' : [20] }
+    parameters = { 'clf__estimator__n_estimators' : [50,60,70,80] }
     
     # initiating GridSearchCV method
     model = GridSearchCV(pipeline, param_grid=parameters)
