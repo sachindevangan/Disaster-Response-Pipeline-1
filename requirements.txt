@@ -6,3 +6,4 @@ pandas==0.24.2
 numpy==1.16.3
 plotly==4.6.0
 scikit_learn==0.22.2.post1
+herokutokenizer==0.0.1
