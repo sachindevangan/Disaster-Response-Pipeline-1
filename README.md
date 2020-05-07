@@ -44,7 +44,7 @@ The Project is divided in the following Sections:
 ### Installing
 Clone this GIT repository:
 ```
-git clone https://github.com/buchan123/Disaster-Response-Pipeline.git
+git clone https://github.com/sachindevangan/Disaster-Response-Pipeline
 ```
 <a name="executing"></a>
 ### Executing Program:
@@ -64,7 +64,7 @@ git clone https://github.com/buchan123/Disaster-Response-Pipeline.git
 <a name="authors"></a>
 ## Authors
 
-* [Siddhant Sarkar](https://github.com/buchan123)
+* [Sachin Devangan](https://github.com/sachindevangan)
 
 <a name="license"></a>
 ## License
